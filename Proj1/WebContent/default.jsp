@@ -31,7 +31,8 @@ function showUsers(){
 	xhttp.open("GET","http://localhost:8080/Proj1/LoginServlet",true);
 	xhttp.send();
 }
-function editUser(name,email){
+function editUser(id,name,email,edit){
+	document.getElementById("id").value = id;
 	document.getElementById("name").value = name;
 	document.getElementById("email").value = email;
 // 	var xhttp = new XMLHttpRequest();
@@ -60,6 +61,7 @@ onLoad();
 <div>
 <form action="LoginServlet" method="post">
 	<div id="main" >
+		<input id="id" type="text" name="id" style="display:none"/>
 		<div><span>User Name: </span><input id="name" type="text" name="name"/></div></br>
 		<div><span>Email:</span><input id="email" type="email" name="email" /></div></br>
 		
@@ -78,7 +80,7 @@ onLoad();
 		List<User> usrList = (List<User>) request.getSession().getAttribute("usrList");
 		if(usrList != null){
 		for(User usr : usrList){
-			out.print("<tr><td>" + usr.getName() + "</td><td>" + usr.getEmail() + "</td><td><button onclick=\"editUser('"+usr.getName()+"','"+usr.getEmail()+"')\">Edit</button></td></tr>");
+			out.print("<tr><td>" + usr.getName() + "</td><td>" + usr.getEmail() + "</td><td><button onclick=\"editUser('"+usr.getId()+"','"+usr.getName()+"','"+usr.getEmail()+"','edit')\">Edit</button></td></tr>");
 		}
 		}
 	%>
