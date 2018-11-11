@@ -45,11 +45,17 @@ public class LoginServlet extends HttpServlet {
 		//doGet(request, response);
 		LoginBO loginBO = new LoginBO();
 		int i =0;
+		String id = request.getParameter("id");
+		if(id==null) {
 		String uname = request.getParameter("name");
 		i = loginBO.registerUser(request.getParameter("name"), request.getParameter("email"));
 		response.getWriter().append(i + " record saved Successfully.." + System.lineSeparator());
 		response.getWriter().append("Welcome " + uname);
-		  
+		}else {
+			i = loginBO.updateUser(request.getParameter("id"),request.getParameter("name"), request.getParameter("email"));
+			response.getWriter().append(i + " record updated Successfully.." + System.lineSeparator());
+			
+		}
 	}
 
 }

@@ -24,4 +24,18 @@ public class LoginBO {
 		return loginDAO.getUserList();
 		
 	}
+	public int updateUser(String id, String name, String email) {
+		
+		loginDAO = new LoginDAO();
+		user = new User();
+		int i =0;
+		user.setId(Integer.parseInt(id));
+		user.setName(name);
+		user.setEmail(email);
+		
+		i = loginDAO.updateUser(user);
+		
+		return i;
+		
+	}
 }

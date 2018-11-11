@@ -82,5 +82,30 @@ public class LoginDAO {
 		}
 		return null;
 	}
+	public int updateUser(User user) {
+		
+		LoginDAO conObj = new LoginDAO();
+		Connection con = conObj.getConnection();
+		int i =0;
+		try {
+			
+			log.info(" user name :: " + user.getName());
+			log.info(" user email :: " + user.getEmail());
+			PreparedStatement statement = con.prepareStatement("update user set name=?,email=? where id=?");
+			statement.setString(1, user.getName());
+			statement.setString(2, user.getEmail());
+			statement.setInt(3, user.getId());
+			
+			System.out.println("update failed -- "+ statement.EXECUTE_FAILED);
+			 i = statement.executeUpdate();
+			con.close();
+			return i;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+		
+	}
 
 }

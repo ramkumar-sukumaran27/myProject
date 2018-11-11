@@ -30,6 +30,7 @@ function showUsers(){
 	  };
 	xhttp.open("GET","http://localhost:8080/Proj1/LoginServlet",true);
 	xhttp.send();
+	window.location.reload();
 }
 function editUser(id,name,email,edit){
 	document.getElementById("id").value = id;
@@ -45,7 +46,7 @@ function editUser(id,name,email,edit){
 // 	xhttp.send();
 }
 function onLoad(){
-	alert('onload');
+	//alert('onload');
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange=function() {
 	    if (this.readyState == 4 && this.status == 200) {
@@ -65,7 +66,7 @@ onLoad();
 		<div><span>User Name: </span><input id="name" type="text" name="name"/></div></br>
 		<div><span>Email:</span><input id="email" type="email" name="email" /></div></br>
 		
-		<div><input type="submit" title="Submit"/></div>
+		<div><input type="submit" value="Save"/></div>
 	</div>
 </form>
 </div>
