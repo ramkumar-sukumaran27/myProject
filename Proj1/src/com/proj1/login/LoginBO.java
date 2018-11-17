@@ -6,7 +6,7 @@ public class LoginBO {
 	LoginDAO loginDAO = null;
 	User user = null;
 	public int registerUser(String name, String email) {
-		
+		System.out.println(""+email);
 		loginDAO = new LoginDAO();
 		user = new User();
 		int i =0;
